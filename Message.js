@@ -74,7 +74,11 @@ export default class Message extends Component {
   }
 
   renderImage(rowData, diffMessage, forceRenderImage, onImagePress) {
-    const ImageView = rowData.imageView || Image;
+
+    if (rowData.imageView) {
+      return rowData.imageView;
+    }
+
     if (rowData.image) {
       if (forceRenderImage) {
         diffMessage = null; // force rendering
@@ -87,7 +91,7 @@ export default class Message extends Component {
               underlayColor='transparent'
               onPress={() => onImagePress(rowData)}
             >
-              <ImageView {...rowData}
+              <Image
                 source={rowData.image}
                 style={[styles.imagePosition, styles.image, (rowData.position === 'left' ? styles.imageLeft : styles.imageRight)]}
               />
@@ -95,7 +99,7 @@ export default class Message extends Component {
           );
         }
         return (
-          <ImageView {...rowData}
+          <Image
             source={rowData.image}
             style={[styles.imagePosition, styles.image, (rowData.position === 'left' ? styles.imageLeft : styles.imageRight)]}
           />
