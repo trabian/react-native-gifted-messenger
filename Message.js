@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
   rowContainer: {
     flexDirection: 'row',
     marginBottom: 10,
+    alignItems: 'flex-end',
   },
   name: {
     color: '#aaaaaa',
